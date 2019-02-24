@@ -6,7 +6,7 @@ public class Bag{
     int item[] = new int[3];
     Item itemlist = new Item();
 
-    private void initail(){
+    public Bag(){
         for(int x = 0; x < i ; x++){
             slot[x][0] = 0;
             slot[x][1] = 0;
@@ -54,13 +54,18 @@ public class Bag{
     }
     public void info(){
         System.out.println("Slot : " + used_slot + "/" + i);
-        itemlist.itemlist(1);
-        System.out.println("1." +  itemlist.name +": " + item[1] +" ea");
-        itemlist.itemlist(2);
-        System.out.println("2." +  itemlist.name +": " + item[2] +" ea");
+        itemlist = new HP_Potion();
+        itemlist.print();
+        System.out.print(" : " + item[1] +" ea\n");
+        itemlist = new EXP_Potion();
+        itemlist.print();
+        System.out.print(" : " + item[2] +" ea\n");
     }
     public void find_item(int itemNO){
-        itemlist.itemlist(itemNO);
+        if(itemNO == 1)
+            itemlist = new HP_Potion();
+        else
+            itemlist = new EXP_Potion();
         System.out.println("You Found a " + itemlist.name +". get it?(y/n)");
         Scanner scan = new Scanner(System.in);
         String act = scan.next();
@@ -70,7 +75,6 @@ public class Bag{
                 System.out.println("You got " + itemlist.name + "!!");
                 break;
             }
-            act = scan.next();
         }
     }
     public void used_item(int itemNO){

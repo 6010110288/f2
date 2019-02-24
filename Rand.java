@@ -13,4 +13,9 @@ public class Rand{
         }
         return n;
     }
+    public int spawnerEnimy(){
+        Random rand = new Random();
+        int n = rand.nextInt(5);
+        return n;
+    }
 }
